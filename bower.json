@@ -6,6 +6,7 @@
     "index.html"
   ],
   "dependencies": {
-    "jquery": "x"
+    "jquery": "x",
+    "underscore": "x"
   }
 }
