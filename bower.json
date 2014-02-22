@@ -1,0 +1,11 @@
+{
+  "name": "chartabull",
+  "version": "0.0.1",
+  "main": "chartabull.js",
+  "ignore": [
+    "index.html"
+  ],
+  "dependencies": {
+    "jquery": "x"
+  }
+}
