@@ -29,12 +29,21 @@
 
   <body>
     <h1>The Circle Chart</h1>
-    <p>The circle chart only shows one value, the current value, as a percentage of the whole.</p>
+    <p>The circle chart only shows one value as a percentage of the whole.</p>
     <div class="chart">
-      <canvas height="150" width="300" class="js-chartabull" id="canvas-me2" data-values="[74,100]" data-options='{}' data-text="Out of 100"></canvas>
+      <canvas height="150" width="300"
+          class="js-chartabull"
+          data-type="pie"
+          data-values="[74,100]"
+          data-text="Completed"></canvas>
     </div>
     <div class="chart">
-      <canvas height="150" width="300" class="js-chartabull" id="canvas-me2" data-values="[24,25]" data-options='{"chartColor": "#E97F02", "textColor": "#490A3D"}' data-text="Out of 100"></canvas>
+      <canvas height="150" width="300"
+          class="js-chartabull"
+          data-type="pie"
+          data-values="[24,25]"
+          data-options='{"chartColor": "#E97F02", "textColor": "#490A3D"}'
+          data-text="Approved Forms"></canvas>
     </div>
   </body>
 
@@ -43,84 +52,9 @@
 
 
 <script>
-  (function () {
-    'use strict';
-    // Store a local reference to jQuery and Underscore.
-    var $ = window.jQuery;
-    var _ = window._;
-
-    var Chartabull = window.Chartabull = function(el, data, options, chartText){
-      _.extend(this, options);
-      this.buildChart(el, data);
-      this.buildText(el, data, chartText);
-    }
-
-    _.extend(Chartabull.prototype, {
-      // Color for area fill
-      chartColor: '#eee;',
-
-      // Font Stylings used in text laid on top
-      fontFamily: "'helvetica neue', arial, verdana, sans-serif",
-      textColor: '#aaa;',
-      textPadding: 20,
-      smallFont: "normal 24px",
-      largeFont: "bold 50px",
-
-      // Background of Chart
-      backgroundColor: "#fff",
-
-      // Set up the canvas
-
-      // Drop some text on the graph
-      buildText: function(el, data, chartText){
-        var height = el.height(),
-            width = el.width();
-
-        var context = el[0].getContext("2d");
-
-        context.fillStyle = this.textColor;
-        context.font = this.largeFont + this.fontFamily;
-        context.fillText(data[0], this.textPadding, height-50);
-        context.font = this.smallFont + this.fontFamily;
-        context.fillText(chartText, this.textPadding, height-this.textPadding);
-
-        return this;
-      },
-
-      // Draw the chart itself
-      buildChart: function(el,data){
-        var height = el.height(),
-            width = el.width(),
-            midX = width/2,
-            midY = height/2,
-            dataSize = _.size(data);
-
-        var sum = _.reduce(data, function(memo, num){ return memo + num; }, 0);
-        var drawContext = el[0].getContext("2d");
-
-
-        var x = width/2;
-        var y = height/2;
-        var r = _.min([width,height])/2;
-
-        // Fill the background
-        drawContext.fillStyle = this.backgroundColor;
-        drawContext.fillRect(0,0, width, height);
-
-        // Draw the arc
-        drawContext.beginPath();
-        drawContext.arc(x, y, r, 0, (Math.PI * 2) * (data[0]/data[1]), false);
-        drawContext.lineTo(x,y);
-        drawContext.closePath();
-        drawContext.fillStyle = this.chartColor;
-        drawContext.fill();
-      }
-    });
-
     $('.js-chartabull').each(function () {
       var $self = $(this);
       var data = $self.data();
-      new Chartabull($self, data.values, data.options, data.text);
+      new Chartabull($self, data.type, data.values, data.options, data.text);
     });
-  })();
 </script>
