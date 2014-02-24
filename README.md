@@ -53,8 +53,8 @@ Initialize your graphs as well:
 
 ### Global options available:
   - textPadding (default: 20px)
-  - largeFont (primary font on the graph. ex: "bold 50pt helvetica")
-  - smallFont (the secondary font on the graph. ex: "normal 20pt arial")
+  - primaryFont (primary font on the graph. ex: "bold 50pt helvetica")
+  - secondaryFont (the secondary font on the graph. ex: "normal 20pt arial")
   - textColor (one color for both text elements)
   - chartColor (one color that represents the filled area on the chart)
 

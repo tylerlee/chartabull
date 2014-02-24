@@ -14,7 +14,8 @@
     } else if(type == 'pie'){
       this.drawPieChart(el, data);
       // The text displayed is a percentage
-      var chartValue = data[0]/data[1] * 100;
+      // round it just a wee bit
+      var chartValue = Math.round((data[0]/data[1] * 100)*10)/10;
       this.buildText(el, chartValue + '%', chartText);
     } else if(type == 'progress'){
       this.drawProgressBar(el, data);
@@ -28,8 +29,8 @@
     // Font Stylings used in text laid on top
     textColor: '#aaa;',
     textPadding: 20,
-    smallFont: "normal 24px 'helvetica neue', arial, verdana, sans-serif",
-    largeFont: "bold 50px 'helvetica neue', arial, verdana, sans-serif",
+    secondaryFont: "normal 24px 'helvetica neue', arial, verdana, sans-serif",
+    primaryFont: "bold 50px 'helvetica neue', arial, verdana, sans-serif",
 
     // Background of Chart
     backgroundColor: "#fff",
@@ -42,9 +43,9 @@
       var context = el[0].getContext("2d");
 
       context.fillStyle = this.textColor;
-      context.font = this.largeFont;
+      context.font = this.primaryFont;
       context.fillText(chartValue, this.textPadding, height-50);
-      context.font = this.smallFont;
+      context.font = this.secondaryFont;
       context.fillText(chartText, this.textPadding, height-this.textPadding);
 
       return this;
@@ -102,7 +103,8 @@
 
       // Fill the background
       drawContext.fillStyle = this.backgroundColor;
-      drawContext.fillRect(0,0, width, height);
+      drawContext.arc(x, y, r, 0, (Math.PI * 2), false);
+      drawContext.fill();
 
       // Draw the arc
       drawContext.beginPath();

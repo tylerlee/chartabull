@@ -18,9 +18,14 @@
         font-size: 18px;
       }
       canvas{
-        border-radius: 5px;
         clear: both;
         margin-bottom: 3em;
+      }
+      .rounded{
+        border-radius: 5px;
+      }
+      .rounded-fifty{
+        border-radius: 50px;
       }
       hr{
         border: 1px solid #eee;
@@ -47,7 +52,7 @@
 
     <p>Size, fonts, and colors can be customized.</p>
 
-    <canvas height="250" width="500" class="js-chartabull"
+    <canvas height="250" width="500" class="js-chartabull rounded"
         data-values="[25,15,25,3,35]"
         data-options='{"backgroundColor": "#E97F02", "chartColor": "#F8CA00", "textColor": "#490A3D"}'
         data-text="% Retention Rate"
@@ -77,22 +82,33 @@
         data-text="Completed"></canvas>
 
 
+    <br>
+
     <canvas height="150" width="300"
         class="js-chartabull"
         data-type="pie"
-        data-values="[24,25]"
-        data-options='{"chartColor": "#E97F02", "textColor": "#490A3D"}'
-        data-text="Approved Forms"></canvas>
+        data-values="[2,25]"
+        data-options='{"chartColor": "#E97F02", "textColor": "#333", "backgroundColor": "#f4f4f4"}'
+        data-text="Approved"></canvas>
+
+    <br>
+
+    <canvas height="150" width="300"
+        class="js-chartabull"
+        data-type="pie"
+        data-values="[123123,123456]"
+        data-options='{"chartColor": "#E97F02", "textColor": "#333", "backgroundColor": "#F8CA00"}'
+        data-text="Approved"></canvas>
 
 
     <hr>
     <h2 id="progress">The Progress Bar</h2>
 
     <canvas height="20" width="500"
-        class="js-chartabull"
+        class="js-chartabull rounded-fifty"
         data-type="progress"
         data-values="[74,100]"
-        data-options='{"backgroundColor":"#dedede", "chartColor": "#E97F02", "largeFont": "normal 16px helvetica"}'></canvas>
+        data-options='{"backgroundColor":"#dedede", "chartColor": "#E97F02", "primaryFont": "normal 16px helvetica"}'></canvas>
 
     <br>
     <canvas height="5" width="500"
