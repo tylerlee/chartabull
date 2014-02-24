@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv='content-type' content='text/html; charset=utf-8'>
     <meta name="viewport" content="width=device-width, user-scalable=0">
-    <title>Chartabull Demo</title>
+    <title>Chartabull Demo - Circles</title>
     <link rel='stylesheet' href='chartabull.css'>
     <script src='bower_components/jquery/dist/jquery.js'></script>
     <script src='bower_components/underscore/underscore.js'></script>
@@ -14,35 +14,27 @@
       body{
         font-family: 'helvetica neue', arial, helvetica, verdana, sans-serif;
         text-align: center;
-      }
-      canvas{
-        clear: both;
-        margin: 0 auto;
+        color: #333;
+        font-weight: 300;
+        font-size: 18px;
       }
       .chart{
-        height: 150px;
-        color: #aaa;
-        text-shadow: 0px 1px 0px white;
+        margin-bottom: 3em;
       }
-      .chart .number{
-        position: relative;
-        left: -80px;
-        font-size: 50px;
-        font-weight: 600;
-        top: 130px;
-      }
-      .chart .text{
-        position: relative;
-        top: 130px;
-        left: -80px;
+      canvas{
+        border-radius: 5px;
       }
     </style>
   </head>
 
   <body>
-    <h1>The Simplest Chart</h1>
+    <h1>The Circle Chart</h1>
+    <p>The circle chart only shows one value, the current value, as a percentage of the whole.</p>
     <div class="chart">
       <canvas height="150" width="300" class="js-chartabull" id="canvas-me2" data-values="[74,100]" data-options='{}' data-text="Out of 100"></canvas>
+    </div>
+    <div class="chart">
+      <canvas height="150" width="300" class="js-chartabull" id="canvas-me2" data-values="[24,25]" data-options='{"chartColor": "#E97F02", "textColor": "#490A3D"}' data-text="Out of 100"></canvas>
     </div>
   </body>
 
