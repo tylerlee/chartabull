@@ -8,10 +8,12 @@
     _.extend(this, options);
     if(type == 'line'){
       this.drawLineChart(el, data);
+      // The text displayed is the last value in the set
       var chartValue = data[_.size(data)-1];
       this.buildText(el, chartValue, chartText);
     } else if(type == 'pie'){
       this.drawPieChart(el, data);
+      // The text displayed is a percentage
       var chartValue = data[0]/data[1] * 100;
       this.buildText(el, chartValue + '%', chartText);
     }
