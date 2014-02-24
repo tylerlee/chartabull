@@ -9,7 +9,7 @@ var Chartabull = window.Chartabull = function(el, type, data, options, chartText
   if(type == 'line'){
     this.drawLineChart(el, data);
     // The text displayed is the last value in the set
-    chartValue = data[_.size(data)-1];
+    chartValue = data[data.length-1];
     this.buildText(el, chartValue, chartText);
   } else if(type == 'pie'){
     this.drawPieChart(el, data);
@@ -17,6 +17,10 @@ var Chartabull = window.Chartabull = function(el, type, data, options, chartText
     // round it just a wee bit
     chartValue = Math.round((data[0]/data[1] * 100)*10)/10;
     this.buildText(el, chartValue + '%', chartText);
+  } else if(type == 'bar'){
+    this.drawBarChart(el, data);
+    chartValue = _.reduce(data, function(a, b){ return a + b; }, 0);
+    this.buildText(el, chartValue, chartText);
   } else if(type == 'progress'){
     this.drawProgressBar(el, data);
   }
@@ -27,6 +31,7 @@ _.extend(Chartabull.prototype, {
   // Font Stylings used in text laid on top
   textColor: '#777;',
   textPadding: 20,
+  barPadding: 2,
   secondaryFont: "normal 24px 'helvetica neue', arial, verdana, sans-serif",
   primaryFont: "bold 50px 'helvetica neue', arial, verdana, sans-serif",
 
@@ -52,7 +57,7 @@ _.extend(Chartabull.prototype, {
   drawLineChart: function(el,data){
     var height = el.height(),
         width = el.width(),
-        dataSize = _.size(data),
+        dataSize = data.length,
         max = _.max(data),
         segmentWidth = width/(dataSize-1),
         segmentHeight = height/max;
@@ -107,6 +112,8 @@ _.extend(Chartabull.prototype, {
     drawContext.fillStyle = this.chartColor;
     drawContext.fill();
 
+    // Cut out the internal arc by dropping a filled circle on top
+    // that is the background color
     drawContext.beginPath();
     drawContext.arc(x,y,r/2,0, (Math.PI * 2), false);
     drawContext.closePath();
@@ -126,5 +133,42 @@ _.extend(Chartabull.prototype, {
     // Fill the bar
     drawContext.fillStyle = this.chartColor;
     drawContext.fillRect(0, 0, width * ratio, height);
+  },
+  drawBarChart: function(el,data){
+    var height = el.height();
+    var width = el.width();
+    var dataSize = data.length;
+    var max = _.max(data);
+    var segmentWidth = width/dataSize;
+    var segmentHeight = height/max;
+
+    var drawContext = el[0].getContext("2d");
+
+    var gdrawContext = el[0].getContext("2d");
+
+    // Fill the background
+    gdrawContext.fillStyle = this.backgroundColor;
+    gdrawContext.fillRect(0,0, width, height);
+
+    // Begin our path at the bottom left of the chart area
+    drawContext.beginPath();
+    drawContext.moveTo(0, height);
+
+    // Draw the bars
+    var current_x = 0;
+    drawContext.fillStyle = this.chartColor;
+    $.each(data, function(val){
+      barYPosition = height - (data[val] * segmentHeight);
+      drawContext.fillRect(current_x, barYPosition, segmentWidth, height);
+      current_x += segmentWidth + 2;
+    });
+
+    drawContext.closePath();
+
+    // Apply optional styles
+    drawContext.fillStyle = this.chartColor;
+    drawContext.fill();
+
+    return this;
   }
 });
