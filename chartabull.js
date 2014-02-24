@@ -23,17 +23,17 @@
   }
 
   _.extend(Chartabull.prototype, {
-    // Color for area fill
-    chartColor: '#eee;',
 
     // Font Stylings used in text laid on top
-    textColor: '#aaa;',
+    textColor: '#777;',
     textPadding: 20,
     secondaryFont: "normal 24px 'helvetica neue', arial, verdana, sans-serif",
     primaryFont: "bold 50px 'helvetica neue', arial, verdana, sans-serif",
 
     // Background of Chart
-    backgroundColor: "#fff",
+    backgroundColor:  "#ffffff",
+    secondaryColor:   "#dedede",
+    chartColor: "#cccccc",
 
     // Drop some text on the graph
     buildText: function(el, chartValue, chartText){
@@ -102,7 +102,7 @@
       var r = _.min([width,height])/2;
 
       // Fill the background
-      drawContext.fillStyle = this.backgroundColor;
+      drawContext.fillStyle = this.secondaryColor;
       drawContext.arc(x, y, r, 0, (Math.PI * 2), false);
       drawContext.fill();
 
@@ -112,6 +112,12 @@
       drawContext.lineTo(x,y);
       drawContext.closePath();
       drawContext.fillStyle = this.chartColor;
+      drawContext.fill();
+
+      drawContext.beginPath();
+      drawContext.arc(x,y,r/2,0, (Math.PI * 2), false);
+      drawContext.closePath();
+      drawContext.fillStyle = this.backgroundColor;
       drawContext.fill();
     },
     drawProgressBar: function(el, data){
