@@ -44,9 +44,17 @@ Initialize your graphs as well:
 - values: array of two values [current, total] from which a percentage will be generated
 - text: the secondary text that explains the value on the chart
 
-- global options:
+
+### Progress Bar
+
+#### Attributes:
+- type: progress
+- values: array of two values [current, total] from which a percentage will be generated
+
+### Global options available:
   - textPadding (default: 20px)
   - largeFont (primary font on the graph. ex: "bold 50pt helvetica")
   - smallFont (the secondary font on the graph. ex: "normal 20pt arial")
   - textColor (one color for both text elements)
   - chartColor (one color that represents the filled area on the chart)
+
