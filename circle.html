@@ -78,14 +78,13 @@
       backgroundColor: "#fff",
 
       // Set up the canvas
-      canvas: document.getElementById('canvas-me2'),
 
       // Drop some text on the graph
       buildText: function(el, data, chartText){
         var height = el.height(),
             width = el.width();
 
-        var context = this.canvas.getContext("2d");
+        var context = el[0].getContext("2d");
 
         context.fillStyle = this.textColor;
         context.font = this.largeFont + this.fontFamily;
@@ -105,7 +104,8 @@
             dataSize = _.size(data);
 
         var sum = _.reduce(data, function(memo, num){ return memo + num; }, 0);
-        var drawContext = this.canvas.getContext("2d");
+        var drawContext = el[0].getContext("2d");
+
 
         var x = width/2;
         var y = height/2;
@@ -115,7 +115,7 @@
         drawContext.fillStyle = this.backgroundColor;
         drawContext.fillRect(0,0, width, height);
 
-        // Draw the circle
+        // Draw the arc
         drawContext.beginPath();
         drawContext.arc(x, y, r, 0, (Math.PI * 2) * (data[0]/data[1]), false);
         drawContext.lineTo(x,y);
