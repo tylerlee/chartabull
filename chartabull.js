@@ -11,8 +11,8 @@ var Chartabull = window.Chartabull = function(el, type, data, options, chartText
     // The text displayed is the last value in the set
     chartValue = _.last(data);
     this.buildText(el, chartValue, chartText);
-  } else if(type == 'pie'){
-    this.drawPieChart(el, data);
+  } else if(type == 'donut'){
+    this.drawDonutChart(el, data);
     // The text displayed is a percentage
     // round it just a wee bit
     chartValue = Math.round((data[0]/data[1] * 100)*10)/10;
@@ -87,7 +87,7 @@ _.extend(Chartabull.prototype, {
 
     return this;
   },
-  drawPieChart: function(el,data){
+  drawDonutChart: function(el,data){
     var height = el.height(),
         width = el.width(),
         drawContext = el[0].getContext("2d");

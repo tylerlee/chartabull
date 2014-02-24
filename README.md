@@ -37,13 +37,13 @@ Initialize your graphs as well:
   - backgroundColor
     - default: none
 
-### Pie Chart
+### Donut Chart
 
 #### Attributes:
-- type: pie
+- type: donut
 - values: array of two values [current, total] from which a percentage will be generated
 - text: the secondary text that explains the value on the chart
-- pie-chart-specific options:
+- donut-chart-specific options:
   - secondaryColor
     - default: #dedede
 
