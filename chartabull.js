@@ -9,7 +9,7 @@ var Chartabull = window.Chartabull = function(el, type, data, options, chartText
   if(type == 'line'){
     this.drawLineChart(el, data);
     // The text displayed is the last value in the set
-    chartValue = data[data.length-1];
+    chartValue = _.last(data);
     this.buildText(el, chartValue, chartText);
   } else if(type == 'pie'){
     this.drawPieChart(el, data);
