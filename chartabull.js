@@ -21,8 +21,6 @@ var Chartabull = window.Chartabull = function(el, type, data, options, chartText
     this.drawBarChart(el, data);
     chartValue = _.reduce(data, function(a, b){ return a + b; }, 0);
     this.buildText(el, chartValue, chartText);
-  } else if(type == 'progress'){
-    this.drawProgressBar(el, data);
   }
 };
 
@@ -119,20 +117,6 @@ _.extend(Chartabull.prototype, {
     drawContext.closePath();
     drawContext.fillStyle = this.backgroundColor;
     drawContext.fill();
-  },
-  drawProgressBar: function(el, data){
-    var height  = el.height(),
-        width   = el.width();
-
-    var ratio  = data[0]/data[1];
-    var drawContext = el[0].getContext("2d");
-
-    // Fill the background
-    drawContext.fillStyle = this.backgroundColor;
-    drawContext.fillRect(0, 0, width, height);
-    // Fill the bar
-    drawContext.fillStyle = this.chartColor;
-    drawContext.fillRect(0, 0, width * ratio, height);
   },
   drawBarChart: function(el,data){
     var height = el.height();
