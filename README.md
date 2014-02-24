@@ -43,7 +43,9 @@ Initialize your graphs as well:
 - type: pie
 - values: array of two values [current, total] from which a percentage will be generated
 - text: the secondary text that explains the value on the chart
-
+- pie-chart-specific options:
+  - secondaryColor
+    - default: #dedede
 
 ### Progress Bar
 
