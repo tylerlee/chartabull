@@ -47,11 +47,11 @@ Initialize your graphs as well:
   - secondaryColor
     - default: #dedede
 
-### Progress Bar
+### Bar Chart
 
 #### Attributes:
-- type: progress
-- values: array of two values [current, total] from which a percentage will be generated
+- type: bar
+- values: array of values (in order you want them to appear, the total value is the text displayed on top of the chart)
 
 ### Global options available:
   - textPadding (default: 20px)
