@@ -42,7 +42,7 @@
   <body>
     <h1>The Simplest Chart</h1>
     <div class="chart">
-      <canvas height="150" width="300" class="js-chartabull" id="canvas-me2" data-values="[1,3,4,5,17]" data-options='{}' data-text="Members"></canvas>
+      <canvas height="150" width="300" class="js-chartabull" id="canvas-me2" data-values="[74,100]" data-options='{}' data-text="Out of 100"></canvas>
     </div>
   </body>
 
@@ -59,7 +59,8 @@
 
     var Chartabull = window.Chartabull = function(el, data, options, chartText){
       _.extend(this, options);
-      this.buildChart(el, data).buildText(el, data, chartText);
+      this.buildChart(el, data);
+      this.buildText(el, data, chartText);
     }
 
     _.extend(Chartabull.prototype, {
@@ -88,47 +89,39 @@
 
         context.fillStyle = this.textColor;
         context.font = this.largeFont + this.fontFamily;
-        context.fillText(data[_.size(data)-1], this.textPadding, height-50);
+        context.fillText(data[0], this.textPadding, height-50);
         context.font = this.smallFont + this.fontFamily;
         context.fillText(chartText, this.textPadding, height-this.textPadding);
 
         return this;
       },
+
       // Draw the chart itself
       buildChart: function(el,data){
         var height = el.height(),
             width = el.width(),
-            dataSize = _.size(data),
-            max = _.max(data),
-            min = _.min(data),
-            segmentWidth = width/(dataSize-1),
-            segmentHeight = height/max;
+            midX = width/2,
+            midY = height/2,
+            dataSize = _.size(data);
 
+        var sum = _.reduce(data, function(memo, num){ return memo + num; }, 0);
         var drawContext = this.canvas.getContext("2d");
+
+        var x = width/2;
+        var y = height/2;
+        var r = _.min([width,height])/2;
 
         // Fill the background
         drawContext.fillStyle = this.backgroundColor;
         drawContext.fillRect(0,0, width, height);
 
-        // Begin our path at the bottom left of the chart area
+        // Draw the circle
         drawContext.beginPath();
-        drawContext.moveTo(0, height);
-
-        $.each(data, function(val){
-          var current_x = val * segmentWidth;
-          var current_y = (height) - (data[val] * segmentHeight);
-          drawContext.lineTo(current_x, current_y);
-        });
-
-        // Close out the graph (connect to bottom right)
-        drawContext.lineTo(width, height);
+        drawContext.arc(x, y, r, 0, (Math.PI * 2) * (data[0]/data[1]), false);
+        drawContext.lineTo(x,y);
         drawContext.closePath();
-
-        // Apply optional styles
         drawContext.fillStyle = this.chartColor;
         drawContext.fill();
-
-        return this;
       }
     });
 
