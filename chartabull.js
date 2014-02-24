@@ -16,6 +16,8 @@
       // The text displayed is a percentage
       var chartValue = data[0]/data[1] * 100;
       this.buildText(el, chartValue + '%', chartText);
+    } else if(type == 'progress'){
+      this.drawProgressBar(el, data);
     }
   }
 
@@ -109,5 +111,19 @@
       drawContext.closePath();
       drawContext.fillStyle = this.chartColor;
       drawContext.fill();
+    },
+    drawProgressBar: function(el, data){
+      var height  = el.height(),
+          width   = el.width();
+
+      var ratio  = data[0]/data[1];
+      var drawContext = el[0].getContext("2d");
+
+      // Fill the background
+      drawContext.fillStyle = this.backgroundColor;
+      drawContext.fillRect(0, 0, width, height);
+      // Fill the bar
+      drawContext.fillStyle = this.chartColor;
+      drawContext.fillRect(0, 0, width * ratio, height);
     }
   });

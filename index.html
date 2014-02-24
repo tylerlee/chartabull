@@ -6,7 +6,6 @@
     <meta http-equiv='content-type' content='text/html; charset=utf-8'>
     <meta name="viewport" content="width=device-width, user-scalable=0">
     <title>Chartabull Demo</title>
-    <link rel='stylesheet' href='chartabull.css'>
     <script src='bower_components/jquery/dist/jquery.js'></script>
     <script src='bower_components/underscore/underscore.js'></script>
     <script src='chartabull.js'></script>
@@ -18,11 +17,10 @@
         font-weight: 300;
         font-size: 18px;
       }
-      .chart{
-        margin-bottom: 3em;
-      }
       canvas{
         border-radius: 5px;
+        clear: both;
+        margin-bottom: 3em;
       }
       hr{
         border: 1px solid #eee;
@@ -39,53 +37,69 @@
     <hr>
     <h2 id="line">The Line Chart</h2>
     <p>Takes an array of values and graphs them in the simplest way possible. The last value is the value shown in the graph.</p>
-    <div class="chart">
-      <canvas height="150" width="300" class="js-chartabull"
-          data-values="[1,3,4,5,17]"
-          data-options='{}'
-          data-text="Members"
-          data-type="line">
-      </canvas>
-    </div>
+
+    <canvas height="150" width="300" class="js-chartabull"
+        data-values="[1,3,4,5,17]"
+        data-options='{}'
+        data-text="Members"
+        data-type="line">
+    </canvas>
+
     <p>Size, fonts, and colors can be customized.</p>
-    <div class="chart">
-      <canvas height="250" width="500" class="js-chartabull"
-          data-values="[25,15,25,3,35]"
-          data-options='{"backgroundColor": "#E97F02", "chartColor": "#F8CA00", "textColor": "#490A3D"}'
-          data-text="% Retention Rate"
-          data-type="line">
-      </canvas>
-    </div>
+
+    <canvas height="250" width="500" class="js-chartabull"
+        data-values="[25,15,25,3,35]"
+        data-options='{"backgroundColor": "#E97F02", "chartColor": "#F8CA00", "textColor": "#490A3D"}'
+        data-text="% Retention Rate"
+        data-type="line">
+    </canvas>
+
 
     <p>Send me lots of numbers.</p>
 
-    <div class="chart">
-      <canvas height="250" width="500" class="js-chartabull"
-          data-values="[942, 76, 335, 382, 527, 102, 832, 244, 214, 947, 379, 114, 239, 155, 108, 4, 600, 279, 929, 269, 824, 15, 354, 900, 860, 586, 262, 957, 232, 721, 49, 344, 141, 978, 76, 686, 645, 878, 796, 947, 531, 579, 840, 865, 929, 263, 853, 783, 146, 386, 669, 609, 157, 248, 420, 589, 391, 875, 745, 236, 123, 512, 605, 823, 594, 213, 205, 373, 345, 917, 906, 315, 308, 23, 171, 663, 630, 47, 143, 270, 421, 729, 224, 69, 392, 93, 870, 343, 15, 531, 331, 310, 95, 495, 862, 808, 284, 486, 741, 642,942, 76, 335, 382, 527, 102, 832, 244, 214, 947, 379, 114, 239, 155, 108, 4, 600, 279, 929, 269, 824, 15, 354, 900, 860, 586, 262, 957, 232, 721, 49, 344, 141, 978, 76, 686, 645, 878, 796, 947, 531, 579, 840, 865, 929, 263, 853, 783, 146, 386, 669, 609, 157, 248, 420, 589, 391, 875, 745, 236, 123, 512, 605, 823, 594, 213, 205, 373, 345, 917, 906, 315, 308, 23, 171, 663, 630, 47, 143, 270, 421, 729, 224, 69, 392, 93, 870, 343, 15, 531, 331, 310, 95, 495, 862, 808, 284, 486, 741, 642,942, 76, 335, 382, 527, 102, 832, 244, 214, 947, 379, 114, 239, 155, 108, 4, 600, 279, 929, 269, 824, 15, 354, 900, 860, 586, 262, 957, 232, 721, 49, 344, 141, 978, 76, 686, 645, 878, 796, 947, 531, 579, 840, 865, 929, 263, 853, 783, 146, 386, 669, 609, 157, 248, 420, 589, 391, 875, 745, 236, 123, 512, 605, 823, 594, 213, 205, 373, 345, 917, 906, 315, 308, 23, 171, 663, 630, 47, 143, 270, 421, 729, 224, 69, 392, 93, 870, 343, 15, 531, 331, 310, 95, 495, 862, 808, 284, 486, 741, 642]"
-          data-options=''
-          data-text="Of Something"
-          data-type="line">
-      </canvas>
-    </div>
+
+    <canvas height="250" width="500" class="js-chartabull"
+        data-values="[942, 76, 335, 382, 527, 102, 832, 244, 214, 947, 379, 114, 239, 155, 108, 4, 600, 279, 929, 269, 824, 15, 354, 900, 860, 586, 262, 957, 232, 721, 49, 344, 141, 978, 76, 686, 645, 878, 796, 947, 531, 579, 840, 865, 929, 263, 853, 783, 146, 386, 669, 609, 157, 248, 420, 589, 391, 875, 745, 236, 123, 512, 605, 823, 594, 213, 205, 373, 345, 917, 906, 315, 308, 23, 171, 663, 630, 47, 143, 270, 421, 729, 224, 69, 392, 93, 870, 343, 15, 531, 331, 310, 95, 495, 862, 808, 284, 486, 741, 642,942, 76, 335, 382, 527, 102, 832, 244, 214, 947, 379, 114, 239, 155, 108, 4, 600, 279, 929, 269, 824, 15, 354, 900, 860, 586, 262, 957, 232, 721, 49, 344, 141, 978, 76, 686, 645, 878, 796, 947, 531, 579, 840, 865, 929, 263, 853, 783, 146, 386, 669, 609, 157, 248, 420, 589, 391, 875, 745, 236, 123, 512, 605, 823, 594, 213, 205, 373, 345, 917, 906, 315, 308, 23, 171, 663, 630, 47, 143, 270, 421, 729, 224, 69, 392, 93, 870, 343, 15, 531, 331, 310, 95, 495, 862, 808, 284, 486, 741, 642,942, 76, 335, 382, 527, 102, 832, 244, 214, 947, 379, 114, 239, 155, 108, 4, 600, 279, 929, 269, 824, 15, 354, 900, 860, 586, 262, 957, 232, 721, 49, 344, 141, 978, 76, 686, 645, 878, 796, 947, 531, 579, 840, 865, 929, 263, 853, 783, 146, 386, 669, 609, 157, 248, 420, 589, 391, 875, 745, 236, 123, 512, 605, 823, 594, 213, 205, 373, 345, 917, 906, 315, 308, 23, 171, 663, 630, 47, 143, 270, 421, 729, 224, 69, 392, 93, 870, 343, 15, 531, 331, 310, 95, 495, 862, 808, 284, 486, 741, 642]"
+        data-options=''
+        data-text="Of Something"
+        data-type="line">
+    </canvas>
 
     <hr>
+
     <h2 id="pie">The Circle Chart</h2>
     <p>The circle chart only shows one value as a percentage of the whole.</p>
-    <div class="chart">
-      <canvas height="150" width="300"
-          class="js-chartabull"
-          data-type="pie"
-          data-values="[74,100]"
-          data-text="Completed"></canvas>
-    </div>
-    <div class="chart">
-      <canvas height="150" width="300"
-          class="js-chartabull"
-          data-type="pie"
-          data-values="[24,25]"
-          data-options='{"chartColor": "#E97F02", "textColor": "#490A3D"}'
-          data-text="Approved Forms"></canvas>
-    </div>
+
+    <canvas height="150" width="300"
+        class="js-chartabull"
+        data-type="pie"
+        data-values="[74,100]"
+        data-text="Completed"></canvas>
+
+
+    <canvas height="150" width="300"
+        class="js-chartabull"
+        data-type="pie"
+        data-values="[24,25]"
+        data-options='{"chartColor": "#E97F02", "textColor": "#490A3D"}'
+        data-text="Approved Forms"></canvas>
+
+
+    <hr>
+    <h2 id="pie">The Completion Bar</h2>
+
+    <canvas height="20" width="500"
+        class="js-chartabull"
+        data-type="progress"
+        data-values="[74,100]"
+        data-options='{"backgroundColor":"#dedede", "chartColor": "#E97F02", "largeFont": "normal 16px helvetica"}'></canvas>
+
+    <br>
+    <canvas height="5" width="500"
+        class="js-chartabull"
+        data-type="progress"
+        data-values="[23,100]"
+        data-options='{"backgroundColor":"#dedede", "chartColor": "#490A3D"}'></canvas>
   </body>
 </html>
 
