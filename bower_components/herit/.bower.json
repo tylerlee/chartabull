@@ -1,0 +1,15 @@
+{
+  "name": "herit",
+  "version": "2.2.1",
+  "main": "herit.js",
+  "homepage": "https://github.com/caseywebdev/herit",
+  "_release": "2.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.2.1",
+    "commit": "ddb4283c3e88827b3eb3459a12720a7a879d74e4"
+  },
+  "_source": "git://github.com/caseywebdev/herit.git",
+  "_target": "x",
+  "_originalSource": "herit"
+}
