@@ -7,15 +7,13 @@ var Chartabull = window.Chartabull = {};
 
 var Base = Chartabull.Base = {
   defaults: {
-    "textColor": '#777;',
-    "textPadding": 20,
-    "barPadding": 2,
+    "textColor": '#777;',           // Overlay text color
+    "textPadding": 20,              // Offset from corner for text
     "secondaryFont": "normal 24px 'helvetica neue', arial, verdana, sans-serif",
     "primaryFont": "bold 50px 'helvetica neue', arial, verdana, sans-serif",
-    // Background of Chart
-    "backgroundColor":  "#ffffff",
-    "secondaryColor":   "#dedede",
-    "chartColor": "#cccccc"
+    "backgroundColor":  "#ffffff",  // Background of Chart
+    "secondaryColor":   "#dedede",  // Certain charts use a secondary color
+    "chartColor": "#cccccc"         // Primary color of a chart element
   },
   draw: function() {},
   getContext: function($el) { return $el[0].getContext("2d"); },
