@@ -1,7 +1,7 @@
 ChartABull
 ==========
 
-Very basic charts. Very much a work in progress. If you're seeing this I shared it with you because I trust you won't judge the code yet.
+Very basic charts.
 
 These are for an [OrgSync](http://www.github.com/orgsync) project so they are built with very few customization goals in my mind -- but there might be some use out there for someone else, or at least be a starting point.
 
@@ -12,27 +12,29 @@ These are for an [OrgSync](http://www.github.com/orgsync) project so they are bu
 Generate a canvas element with a width and height. Give it some values and specify your options.
 
 ```
-<canvas height="250" width="500" class="js-chartabull"
-    data-values   = "[25,15,25,3,35]"
-    data-options  = '{"backgroundColor": "#E97F02", "chartColor": "#F8CA00", "textColor": "#490A3D"}'
-    data-text     = "% Retention Rate"
-    data-type     = "line">
+  <canvas height="150" width="300"
+      class="js-donut-chart"
+      data-type="donut"
+      data-values="[74,100]"
+      data-text="Completed"></canvas>
 ```
 
 Initialize your graphs as well:
 
 ```
-  $('.js-chartabull').each(function () {
+  $('.js-donut-chart').each(function () {
     var $self = $(this);
     var data = $self.data();
-    new Chartabull($self, data.type, data.values, data.options, data.text);
+    new Chartabull.Donut.draw($self, data.values, data.options, data.text);
   });
+
+  $('.js-line-chart').each(function () { ... });
+  $('.js-bar-chart').each(function  () { ... });
 ```
 
 ### Line Chart
 
 #### Attributes:
-- type: line
 - values: array of values (in order you want them to appear, the last value is the text displayed on top of the chart)
 - text: the secondary text that explains the value on the chart
 - line-chart-specific options:
@@ -42,7 +44,6 @@ Initialize your graphs as well:
 ### Donut Chart
 
 #### Attributes:
-- type: donut
 - values: array of two values [current, total] from which a percentage will be generated
 - text: the secondary text that explains the value on the chart
 - donut-chart-specific options:
@@ -52,7 +53,6 @@ Initialize your graphs as well:
 ### Bar Chart
 
 #### Attributes:
-- type: bar
 - values: array of values (in order you want them to appear, the total value is the text displayed on top of the chart)
 
 ### Global options available:
