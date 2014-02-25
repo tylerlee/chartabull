@@ -127,19 +127,21 @@
 
 
 <script>
-  $('.js-line-chart').each(function () {
-    var $self = $(this);
-    var data = $self.data();
-    new Chartabull.Line.draw($self, data.values, data.options, data.text);
-  });
-  $('.js-bar-chart').each(function () {
-    var $self = $(this);
-    var data = $self.data();
-    new Chartabull.Bar.draw($self, data.values, data.options, data.text);
-  });
-  $('.js-donut-chart').each(function () {
-    var $self = $(this);
-    var data = $self.data();
-    new Chartabull.Donut.draw($self, data.values, data.options, data.text);
-  });
+  (function () {
+    $('.js-line-chart').each(function () {
+      var $self = $(this);
+      var data = $self.data();
+      new Chartabull.Line.draw($self, data.values, data.options, data.text);
+    });
+    $('.js-bar-chart').each(function () {
+      var $self = $(this);
+      var data = $self.data();
+      new Chartabull.Bar.draw($self, data.values, data.options, data.text);
+    });
+    $('.js-donut-chart').each(function () {
+      var $self = $(this);
+      var data = $self.data();
+      new Chartabull.Donut.draw($self, data.values, data.options, data.text);
+    });
+  })();
 </script>
